@@ -3,6 +3,7 @@
 
 namespace App\Helpers;
 use App\Models\LogActivity as LogActivityModel;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class LogActivity
@@ -15,7 +16,7 @@ class LogActivity
         $log['method'] = FacadesRequest::method();
         $log['ip'] = FacadesRequest::ip();
         $log['agent'] = FacadesRequest::header('user-agent');
-        $log['user_id'] = auth()->check() ? auth()->user()->id : 1;
+        $log['user_id'] = auth()->check() ? auth()->user()->id : 2;
         LogActivityModel::create($log);
     }
 
